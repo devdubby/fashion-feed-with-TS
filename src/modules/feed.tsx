@@ -5,9 +5,9 @@ export const setFeedList = (data: object) => ({
   payload: data,
 });
 
-interface FeedAction ReturnType<typeof setFeedList>;
+type FeedAction ReturnType<typeof setFeedList>;
 
-interface FeedListState {
+type FeedListState {
   feedList: {
     list: ListType[];
     totalListCount: number;
@@ -16,7 +16,7 @@ interface FeedListState {
   };
 };
 
-interface ListType {
+type ListType {
   id: number;
   text: string;
   tags: string[];
@@ -25,20 +25,20 @@ interface ListType {
   createdAt: string;
 };
 
-interface MdInfoType {
+type MdInfoType {
   id: number;
   mdName: string;
   mdThumb: string;
   mdDesc: string;
 };
 
-interface MediaListType {
+type MediaListType {
   id: number;
   type: string;
   url: string;
 };
 
-const initialState: FeedListState {
+const initialState: FeedListState = {
   feedList: {
     list: [],
     totalListCount: 0,
