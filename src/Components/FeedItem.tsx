@@ -22,7 +22,7 @@ function FeedItem({
         <p className="feedText">{text}</p>
       </article>
       <div className="item-footer">
-        <em className="feedDate">{createdAt}</em>
+        <em className="feedDate">{createdAt.substring(0, 10).split("-").join(".")}</em>
         <ul>
           <li>0</li>
           <li>10</li>

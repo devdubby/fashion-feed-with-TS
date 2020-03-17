@@ -18,15 +18,31 @@ export type ListType = {
   createdAt: string;
 };
 
-type MdInfoType = {
+export type MdInfoType = {
   id: number;
   mdName: string;
   mdThumb: string;
   mdDesc: string;
 };
 
-type MediaListType = {
+export type MediaListType = {
   id: number;
   type: string;
   url: string;
+};
+
+export type FeedContentType = {
+  feedContent: FeedContentDataType;
+};
+
+export type FeedContentDataType = {
+  id: number;
+  text: string;
+  tags: string[];
+  likedCount?: number;
+  replyCount?: number;
+  sharedCount?: number;
+  mdInfo: MdInfoType;
+  mediaList: MediaListType[];
+  createdAt: string;
 };

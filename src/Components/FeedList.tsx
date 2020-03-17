@@ -8,11 +8,10 @@ type FeedListProps = {
 };
 
 function FeedList({ feedList }: FeedListProps) {
-  console.log('feedList', feedList);
   return (
     <div className="feedList-container">
-      {feedList.list.map(feed => 
-        <FeedItem 
+      {feedList.list.map((feed) => (
+        <FeedItem
           key={feed.id}
           id={feed.id}
           text={feed.text}
@@ -21,7 +20,7 @@ function FeedList({ feedList }: FeedListProps) {
           mediaList={feed.mediaList}
           createdAt={feed.createdAt}
         />
-      )}
+      ))}
     </div>
   );
 }

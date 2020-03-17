@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import FeedApp from './Container/FeedApp';
-import FeedDetail from './Components/FeedDetail';
+import DetailApp from './Container/DetailApp';
 
 function App() {
   return (
     <div className="App">
       <Route exact path="/" component={FeedApp} />
-      <Route path="/:id" component={FeedDetail} />
+      <Route path="/:id" component={DetailApp} />
     </div>
   );
 }

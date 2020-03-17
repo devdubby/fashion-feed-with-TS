@@ -29,11 +29,7 @@ function FeedApp() {
     callApi();
   }, [callApi]);
 
-  return (
-    <>
-      {loading ? "loading" : <FeedList feedList={feedList} />}
-    </>
-  );
+  return <>{loading ? 'loading' : <FeedList feedList={feedList} />}</>;
 }
 
 export default FeedApp;
