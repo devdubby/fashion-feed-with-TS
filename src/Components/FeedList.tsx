@@ -1,12 +1,29 @@
 import React from 'react';
-import { FeedListState, ListType } from '../modules/types';
+import { FeedListType } from '../modules/types';
+import FeedItem from './FeedItem';
+import './FeedList.css';
 
 type FeedListProps = {
-  feedList: FeedListState;
+  feedList: FeedListType;
 };
 
 function FeedList({ feedList }: FeedListProps) {
-  return <div>feedlist</div>;
+  console.log('feedList', feedList);
+  return (
+    <div className="feedList-container">
+      {feedList.list.map(feed => 
+        <FeedItem 
+          key={feed.id}
+          id={feed.id}
+          text={feed.text}
+          tags={feed.tags}
+          mdInfo={feed.mdInfo}
+          mediaList={feed.mediaList}
+          createdAt={feed.createdAt}
+        />
+      )}
+    </div>
+  );
 }
 
 export default FeedList;

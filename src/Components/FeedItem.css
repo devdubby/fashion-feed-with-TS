@@ -1,0 +1,51 @@
+.feed-item {
+  width: 28%;
+  height: 30%;
+  padding: 32px;
+  text-decoration: none;
+  color: inherit;
+  cursor: unset;
+}
+
+.figure {
+  margin: 0px;
+}
+
+.figure-img {
+  width: 100%;
+}
+
+.feedTags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.feedText {
+  white-space: pre-line;
+  overflow: hidden;
+  height: auto;
+  font-size: 12px;
+  max-height: 207px;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  color: #1d1e21;
+  text-align: left;
+}
+
+.item-footer {
+  flex-grow: 1;
+  font-size: 14px;
+  display: flex;
+}
+
+.feedDate {
+  flex: 1;
+  color: #a6a7a9;
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}

@@ -2,8 +2,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FeedList from '../Components/FeedList';
 import { RootState } from '../modules';
-import { setFeedList } from '../modules/feed';
-import { FeedListState } from '../modules/types';
+import feed, { setFeedList } from '../modules/feed';
+import { FeedListType } from '../modules/types';
 
 function FeedApp() {
   const [state, setState] = useState({
@@ -11,7 +11,7 @@ function FeedApp() {
   });
   const { loading } = state;
   const dispatch = useDispatch();
-  const feedList: FeedListState = useSelector((state: RootState) => state.feed);
+  const feedList: FeedListType = useSelector((state: RootState) => state.feed.feedList);
 
   const callApi = useCallback(() => {
     fetch('/feed-list.json')
@@ -30,9 +30,9 @@ function FeedApp() {
   }, [callApi]);
 
   return (
-    <div>
+    <>
       {loading ? "loading" : <FeedList feedList={feedList} />}
-    </div>
+    </>
   );
 }
 
