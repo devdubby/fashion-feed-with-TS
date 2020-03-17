@@ -1,7 +1,12 @@
 import React from 'react';
+import { FeedListState, ListType } from '../modules/types';
 
-function FeedList() {
-  return <div>FeedList</div>;
+type FeedListProps = {
+  feedList: FeedListState;
+};
+
+function FeedList({ feedList }: FeedListProps) {
+  return <div>feedlist</div>;
 }
 
 export default FeedList;
