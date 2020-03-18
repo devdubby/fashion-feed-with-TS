@@ -1,21 +1,14 @@
-export type FeedListState = {
+export type FeedState = {
   feedList: FeedListType;
+  feedContent: FeedContentType;
+  feedComments: FeedCommentsType;
 };
 
 export type FeedListType = {
-  list: ListType[];
+  list: FeedContentType[];
   totalListCount: number;
   totalPages: number;
   isNext: boolean;
-};
-
-export type ListType = {
-  id: number;
-  text: string;
-  tags: string[];
-  mdInfo: MdInfoType;
-  mediaList: MediaListType[];
-  createdAt: string;
 };
 
 export type MdInfoType = {
@@ -32,10 +25,6 @@ export type MediaListType = {
 };
 
 export type FeedContentType = {
-  feedContent: FeedContentDataType;
-};
-
-export type FeedContentDataType = {
   id: number;
   text: string;
   tags: string[];
@@ -45,4 +34,22 @@ export type FeedContentDataType = {
   mdInfo: MdInfoType;
   mediaList: MediaListType[];
   createdAt: string;
+};
+
+export type FeedCommentsType = {
+  list: CommentsListDataType[];
+  totalListCount: number;
+  totalPages: number;
+  isNext: boolean;
+};
+
+type CommentsListDataType = {
+  id: number;
+  feedId: number;
+  userName: string;
+  userProfileUrl: string;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+  editable: boolean;
 };

@@ -1,11 +1,10 @@
 .detail-container {
   display: flex;
-  padding: 50px 32px;
+  padding: 50px;
 }
 
 .images-container {
   width: 39%;
-  padding: 0px 10px;
 }
 
 .figure-image {
@@ -18,7 +17,7 @@
 
 .content-container {
   width: 58%;
-  left: 548px;
+  left: 38vw;
 }
 
 .content {

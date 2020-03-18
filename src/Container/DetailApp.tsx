@@ -1,48 +1,39 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import FeedDetail from '../Components/FeedDetail';
-import { FeedContentType } from '../modules/types';
+import FeedDetail from '../Components/FeedDetail/FeedDetail';
+import { useSelector, useDispatch } from 'react-redux';
+import { FeedState } from '../modules/types';
+import { setFeedContent, setFeedComments } from '../modules/feed';
+import { RootState } from '../modules';
 
 function DetailApp() {
   const [state, setState] = useState({
-    feedContent: {
-      id: 0,
-      text: '',
-      tags: [],
-      likedCount: 0,
-      replyCount: 0,
-      sharedCount: 0,
-      mdInfo: {
-        id: 0,
-        mdName: '',
-        mdThumb: '',
-        mdDesc: '',
-      },
-      mediaList: [],
-      createdAt: '',
-    },
     loading: true,
   });
-  const { loading, feedContent } = state;
+  const { loading } = state;
+  const { feedContent, feedComments }: FeedState = useSelector((state: RootState) => state.feed);
+  const dispatch = useDispatch();
   console.log('content', feedContent);
 
-  const callApi = useCallback(() => {
-    fetch('/feed-detail.json')
-      .then((response) => response.json())
-      .then(({ data: feedContent }) => {
-        // dispatch(setFeedList(data));
-        setState({
-          feedContent,
-          loading: false,
-        });
+  const fetchFeedDetail = fetch('/feed-detail.json')
+    .then((response) => response.json())
+    .then(({ data }) => data)
+    .catch((err) => console.error(err));
+
+  const fetchFeedComments = fetch('/feed-comments.json')
+    .then((response) => response.json())
+    .then(({ data }) => data)
+    .catch((err) => console.error(err));
+
+  useEffect(() => {
+    Promise.all([fetchFeedDetail, fetchFeedComments])
+      .then(([feedContent, feedComments]) => {
+        dispatch(setFeedContent(feedContent));
+        dispatch(setFeedComments(feedComments));
       })
       .catch((err) => console.error(err));
   }, []);
 
-  useEffect(() => {
-    callApi();
-  }, [callApi]);
-
-  return <>{loading ? 'loading' : <FeedDetail {...feedContent} />}</>;
+  return <>{loading ? 'loading' : <FeedDetail {...feedContent} comments={feedComments} />}</>;
 }
 
 export default DetailApp;

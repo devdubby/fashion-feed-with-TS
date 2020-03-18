@@ -1,5 +1,5 @@
 .feed-item {
-  width: 28%;
+  width: 22%;
   height: 30%;
   padding: 32px;
   text-decoration: none;
@@ -36,6 +36,14 @@
   flex-grow: 1;
   font-size: 14px;
   display: flex;
+}
+
+.item-footer li {
+  color: #a6a7a9;
+}
+
+.item-footer span {
+  margin: 5px;
 }
 
 .feedDate {

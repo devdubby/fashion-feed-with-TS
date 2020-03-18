@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import FeedList from '../Components/FeedList';
+import FeedList from '../Components/FeedList/FeedList';
 import { RootState } from '../modules';
-import feed, { setFeedList } from '../modules/feed';
+import { setFeedList } from '../modules/feed';
 import { FeedListType } from '../modules/types';
 
 function FeedApp() {
