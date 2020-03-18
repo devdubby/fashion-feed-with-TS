@@ -3,28 +3,24 @@ import {
 } from './types';
 
 const SET_FEED_LIST = 'feed/SET_FEED_LIST' as const;
-const SET_FEED_CONTENT = 'feed/SET_FEED_CONTENT' as const;
-const SET_FEED_COMMENTS = 'feed/SET_FEED_COMMENTS' as const;
+const SET_FEED_DETAIL_CONTENT = 'feed/SET_FEED_DETAIL_CONTENT' as const;
 
 export const setFeedList = (data: FeedListType) => ({
   type: SET_FEED_LIST,
   payload: data,
 });
 
-export const setFeedContent = (data: FeedContentType) => ({
-  type: SET_FEED_CONTENT,
-  payload: data,
-});
-
-export const setFeedComments = (data: FeedCommentsType) => ({
-  type: SET_FEED_COMMENTS,
-  payload: data,
+export const setFeedDetailContent = (feedContent: FeedContentType, feedComments: FeedCommentsType) => ({
+  type: SET_FEED_DETAIL_CONTENT,
+  payload: { 
+    feedContent, 
+    feedComments
+  },
 });
 
 type FeedAction =
   | ReturnType<typeof setFeedList>
-  | ReturnType<typeof setFeedContent>
-  | ReturnType<typeof setFeedComments>;
+  | ReturnType<typeof setFeedDetailContent>;
 
 const initialState: FeedState = {
   feedList: {
@@ -64,15 +60,11 @@ function feed(state: FeedState = initialState, action: FeedAction): FeedState {
         ...state,
         feedList: action.payload,
       };
-    case SET_FEED_CONTENT:
+    case SET_FEED_DETAIL_CONTENT:
       return {
         ...state,
-        feedContent: action.payload,
-      };
-    case SET_FEED_COMMENTS:
-      return {
-        ...state,
-        feedComments: action.payload,
+        feedContent: action.payload.feedContent,
+        feedComments: action.payload.feedComments,
       };
     default:
       return state;

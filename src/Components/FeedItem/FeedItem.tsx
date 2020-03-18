@@ -1,9 +1,9 @@
 import React from 'react';
-import { FeedContentDataType } from '../../modules/types';
+import { FeedContentType } from '../../modules/types';
 import './FeedItem.css';
 import { Link } from 'react-router-dom';
 
-type FeedItemProps = FeedContentDataType;
+type FeedItemProps = FeedContentType;
 
 function FeedItem({
   id,

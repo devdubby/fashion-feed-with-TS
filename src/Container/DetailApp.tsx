@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import FeedDetail from '../Components/FeedDetail/FeedDetail';
 import { useSelector, useDispatch } from 'react-redux';
 import { FeedState } from '../modules/types';
-import { setFeedContent, setFeedComments } from '../modules/feed';
+import { setFeedDetailContent } from '../modules/feed';
 import { RootState } from '../modules';
 
 function DetailApp() {
@@ -12,7 +12,7 @@ function DetailApp() {
   const { loading } = state;
   const { feedContent, feedComments }: FeedState = useSelector((state: RootState) => state.feed);
   const dispatch = useDispatch();
-  console.log('content', feedContent);
+  console.log('tsetsetset', feedContent, feedComments);
 
   const fetchFeedDetail = fetch('/feed-detail.json')
     .then((response) => response.json())
@@ -27,13 +27,15 @@ function DetailApp() {
   useEffect(() => {
     Promise.all([fetchFeedDetail, fetchFeedComments])
       .then(([feedContent, feedComments]) => {
-        dispatch(setFeedContent(feedContent));
-        dispatch(setFeedComments(feedComments));
+        dispatch(setFeedDetailContent(feedContent, feedComments));
+        setState({
+          loading: false,
+        })
       })
       .catch((err) => console.error(err));
   }, []);
 
-  return <>{loading ? 'loading' : <FeedDetail {...feedContent} comments={feedComments} />}</>;
+  return <>{loading ? 'loading' : <FeedDetail {...feedContent} />}</>;
 }
 
 export default DetailApp;

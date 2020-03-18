@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FeedContentType, FeedCommentsType } from '../../modules/types';
 import './FeedDetail.css';
 
-type FeedDetailProps = FeedContentType & FeedCommentsType;
+type FeedDetailProps = FeedContentType;
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -35,7 +35,6 @@ function FeedDetail({
   },
   mediaList,
   createdAt,
-  comments,
 }: FeedDetailProps) {
   const switchPosition: boolean = useScroll();
   const [isLike, onLike] = useState(false);
