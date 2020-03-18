@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FeedContentType, FeedCommentsType } from '../../modules/types';
 import './FeedDetail.css';
+import FeedComments from '../FeedComments/FeedComments';
 
-type FeedDetailProps = FeedContentType;
+type FeedDetailProps = FeedContentType & {
+  feedComments: FeedCommentsType;
+};
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -35,6 +38,7 @@ function FeedDetail({
   },
   mediaList,
   createdAt,
+  feedComments,
 }: FeedDetailProps) {
   const switchPosition: boolean = useScroll();
   const [isLike, onLike] = useState(false);
@@ -89,16 +93,7 @@ function FeedDetail({
             <textarea placeholder="내용을 입력하세요." className="reply-input-box"></textarea>
             <button className="reply-btn">댓글 등록</button>
           </div>
-          <div className="reply-list">
-            <dl>
-              <dt>
-                <span></span>
-                <em></em>
-              </dt>
-              <dd></dd>
-            </dl>
-            <button className="reply-comments-btn">답글</button>
-          </div>
+          <FeedComments {...feedComments} />
         </div>
       </div>
     </div>

@@ -11,14 +11,14 @@ export type FeedListType = {
   isNext: boolean;
 };
 
-export type MdInfoType = {
+type MdInfoType = {
   id: number;
   mdName: string;
   mdThumb: string;
   mdDesc: string;
 };
 
-export type MediaListType = {
+type MediaListType = {
   id: number;
   type: string;
   url: string;
@@ -47,7 +47,8 @@ type CommentsListDataType = {
   id: number;
   feedId: number;
   userName: string;
-  userProfileUrl: string;
+  userProfileUrl?: string;
+  replies?: FeedCommentsType;
   comment: string;
   createdAt: string;
   updatedAt: string;

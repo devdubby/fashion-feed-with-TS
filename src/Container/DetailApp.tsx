@@ -12,7 +12,6 @@ function DetailApp() {
   const { loading } = state;
   const { feedContent, feedComments }: FeedState = useSelector((state: RootState) => state.feed);
   const dispatch = useDispatch();
-  console.log('tsetsetset', feedContent, feedComments);
 
   const fetchFeedDetail = fetch('/feed-detail.json')
     .then((response) => response.json())
@@ -35,7 +34,7 @@ function DetailApp() {
       .catch((err) => console.error(err));
   }, []);
 
-  return <>{loading ? 'loading' : <FeedDetail {...feedContent} />}</>;
+  return <>{loading ? 'loading' : <FeedDetail {...feedContent} feedComments={feedComments} />}</>;
 }
 
 export default DetailApp;
