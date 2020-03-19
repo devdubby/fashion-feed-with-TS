@@ -19,7 +19,7 @@ function FeedItem({
   return (
     <Link className="feed-item" to={`/${id}`}>
       <figure className="figure">
-        <img className="figure-img" src={mediaList[0].url} />
+        <img className="figure-img" src={mediaList[0].url} alt="figure-img" />
       </figure>
       <article className="article">
         <div className="feedTags">
@@ -38,13 +38,19 @@ function FeedItem({
         </em>
         <ul>
           <li>
-            <i className="far fa-heart"><span>{likedCount ? likedCount : 0}</span></i>
+            <i className="far fa-heart">
+              <span>{likedCount || 0}</span>
+            </i>
           </li>
           <li>
-            <i className="far fa-comment"><span>{replyCount ? replyCount : 0}</span></i>
+            <i className="far fa-comment">
+              <span>{replyCount || 0}</span>
+            </i>
           </li>
           <li>
-            <i className="fas fa-share-alt"><span>{sharedCount ? sharedCount : 0}</span></i>
+            <i className="fas fa-share-alt">
+              <span>{sharedCount || 0}</span>
+            </i>
           </li>
         </ul>
       </div>

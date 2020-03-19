@@ -22,6 +22,7 @@ function FeedComments({
                       ? reply.userProfileUrl
                       : require('../../images/defaulImage.png')
                   }
+                  alt="profile-image"
                 />
               </div>
               <em className="reply-date">{reply.createdAt}</em>
@@ -35,4 +36,4 @@ function FeedComments({
   );
 }
 
-export default FeedComments;
+export default React.memo(FeedComments);

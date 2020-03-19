@@ -3,18 +3,6 @@
   padding: 50px;
 }
 
-.images-container {
-  width: 39%;
-}
-
-.figure-image {
-  margin: 0px;
-}
-
-.media-image {
-  width: 78%;
-}
-
 .content-container {
   width: 58%;
   left: 38vw;
@@ -77,23 +65,11 @@
   padding: 18px 0 24px;
 }
 
-.hashTag {
-}
-
-.hashTag-feedTags {
-}
-
-.tags {
-}
-
 .reply {
   padding-top: 38px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.reply-header {
 }
 
 .reply-box {

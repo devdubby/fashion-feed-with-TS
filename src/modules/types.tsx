@@ -18,7 +18,11 @@ type MdInfoType = {
   mdDesc: string;
 };
 
-type MediaListType = {
+export type MediaListType = {
+  mediaList: MediaListDataType[];
+};
+
+type MediaListDataType = {
   id: number;
   type: string;
   url: string;
@@ -32,7 +36,7 @@ export type FeedContentType = {
   replyCount?: number;
   sharedCount?: number;
   mdInfo: MdInfoType;
-  mediaList: MediaListType[];
+  mediaList: MediaListDataType[];
   createdAt: string;
 };
 

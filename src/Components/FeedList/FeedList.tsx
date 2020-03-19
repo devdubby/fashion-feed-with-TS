@@ -11,18 +11,7 @@ function FeedList({ feedList }: FeedListProps) {
   return (
     <div className="feedList-container">
       {feedList.list.map((feed) => (
-        <FeedItem
-          key={feed.id}
-          id={feed.id}
-          text={feed.text}
-          tags={feed.tags}
-          likedCount={feed.likedCount}
-          replyCount={feed.replyCount}
-          sharedCount={feed.sharedCount}
-          mdInfo={feed.mdInfo}
-          mediaList={feed.mediaList}
-          createdAt={feed.createdAt}
-        />
+        <FeedItem key={feed.id} {...feed} />
       ))}
     </div>
   );

@@ -10,17 +10,18 @@ export const setFeedList = (data: FeedListType) => ({
   payload: data,
 });
 
-export const setFeedDetailContent = (feedContent: FeedContentType, feedComments: FeedCommentsType) => ({
+export const setFeedDetailContent = (
+  feedContent: FeedContentType,
+  feedComments: FeedCommentsType, 
+) => ({
   type: SET_FEED_DETAIL_CONTENT,
-  payload: { 
-    feedContent, 
-    feedComments
+  payload: {
+    feedContent,
+    feedComments,
   },
 });
 
-type FeedAction =
-  | ReturnType<typeof setFeedList>
-  | ReturnType<typeof setFeedDetailContent>;
+type FeedAction = ReturnType<typeof setFeedList> | ReturnType<typeof setFeedDetailContent>;
 
 const initialState: FeedState = {
   feedList: {

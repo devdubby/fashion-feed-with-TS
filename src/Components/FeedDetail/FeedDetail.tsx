@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FeedContentType, FeedCommentsType } from '../../modules/types';
 import './FeedDetail.css';
 import FeedComments from '../FeedComments/FeedComments';
+import MediaList from '../MediaList/MediaList';
 
 type FeedDetailProps = FeedContentType & {
   feedComments: FeedCommentsType;
@@ -45,13 +46,7 @@ function FeedDetail({
 
   return (
     <div className="detail-container">
-      <div className="images-container">
-        {mediaList.map((media) => (
-          <figure className="figure-image" key={media.id}>
-            <img className="media-image" src={media.url} alt={media.type} />
-          </figure>
-        ))}
-      </div>
+      <MediaList mediaList={mediaList} />
       <div
         className="content-container"
         style={{
@@ -100,4 +95,4 @@ function FeedDetail({
   );
 }
 
-export default FeedDetail;
+export default React.memo(FeedDetail);

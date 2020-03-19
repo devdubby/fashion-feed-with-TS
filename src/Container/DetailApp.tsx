@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FeedDetail from '../Components/FeedDetail/FeedDetail';
 import { useSelector, useDispatch } from 'react-redux';
 import { FeedState } from '../modules/types';
@@ -32,7 +32,7 @@ function DetailApp() {
         })
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [dispatch]);
 
   return <>{loading ? 'loading' : <FeedDetail {...feedContent} feedComments={feedComments} />}</>;
 }
