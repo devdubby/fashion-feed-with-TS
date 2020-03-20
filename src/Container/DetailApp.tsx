@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FeedState } from '../modules/types';
 import { setFeedDetailContent } from '../modules/feed';
 import { RootState } from '../modules';
+import { feedModel } from '../models/FeedModel';
 
 function DetailApp() {
   const [state, setState] = useState({
@@ -26,6 +27,7 @@ function DetailApp() {
   useEffect(() => {
     Promise.all([fetchFeedDetail, fetchFeedComments])
       .then(([feedContent, feedComments]) => {
+        feedModel(feedContent);
         dispatch(setFeedDetailContent(feedContent, feedComments));
         setState({
           loading: false,

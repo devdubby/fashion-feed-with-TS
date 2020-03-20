@@ -12,6 +12,7 @@ function FeedApp() {
   const { loading } = state;
   const dispatch = useDispatch();
   const feedList: FeedListType = useSelector((state: RootState) => state.feed.feedList);
+  console.log('test', feedList)
 
   const callApi = useCallback(() => {
     fetch('/feed-list.json')

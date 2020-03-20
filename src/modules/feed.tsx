@@ -5,14 +5,19 @@ import {
 const SET_FEED_LIST = 'feed/SET_FEED_LIST' as const;
 const SET_FEED_DETAIL_CONTENT = 'feed/SET_FEED_DETAIL_CONTENT' as const;
 
-export const setFeedList = (data: FeedListType) => ({
-  type: SET_FEED_LIST,
-  payload: data,
-});
+export const setFeedList = (data: FeedListType) => {
+  const testObj = {
+    ...data,
+  }
+  return {
+    type: SET_FEED_LIST,
+    payload: data,
+  }
+};
 
 export const setFeedDetailContent = (
   feedContent: FeedContentType,
-  feedComments: FeedCommentsType, 
+  feedComments: FeedCommentsType,
 ) => ({
   type: SET_FEED_DETAIL_CONTENT,
   payload: {
