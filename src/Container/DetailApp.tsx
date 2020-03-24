@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FeedState } from '../modules/types';
 import { setFeedDetailContent } from '../modules/feed';
 import { RootState } from '../modules';
-import { feedModel } from '../models/FeedModel';
 
 function DetailApp() {
   const [state, setState] = useState({
@@ -14,12 +13,12 @@ function DetailApp() {
   const { feedContent, feedComments }: FeedState = useSelector((state: RootState) => state.feed);
   const dispatch = useDispatch();
 
-  const fetchFeedDetail = fetch('/feed-detail.json')
+  const fetchFeedDetail = fetch('/detail')
     .then((response) => response.json())
     .then(({ data }) => data)
     .catch((err) => console.error(err));
 
-  const fetchFeedComments = fetch('/feed-comments.json')
+  const fetchFeedComments = fetch('/comments')
     .then((response) => response.json())
     .then(({ data }) => data)
     .catch((err) => console.error(err));
@@ -27,14 +26,13 @@ function DetailApp() {
   useEffect(() => {
     Promise.all([fetchFeedDetail, fetchFeedComments])
       .then(([feedContent, feedComments]) => {
-        feedModel(feedContent);
         dispatch(setFeedDetailContent(feedContent, feedComments));
         setState({
           loading: false,
         })
       })
       .catch((err) => console.error(err));
-  }, [dispatch]);
+  }, [dispatch, fetchFeedDetail, fetchFeedComments]);
 
   return <>{loading ? 'loading' : <FeedDetail {...feedContent} feedComments={feedComments} />}</>;
 }
