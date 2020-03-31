@@ -32,7 +32,7 @@ function DetailApp() {
         })
       })
       .catch((err) => console.error(err));
-  }, [dispatch, fetchFeedDetail, fetchFeedComments]);
+  }, [dispatch]);
 
   return <>{loading ? 'loading' : <FeedDetail {...feedContent} feedComments={feedComments} />}</>;
 }

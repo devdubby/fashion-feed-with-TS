@@ -51,5 +51,5 @@
     "eslint-plugin-import": "^2.20.1",
     "prettier-eslint": "^9.0.1"
   },
-  "proxy": "https://dcode-code-test.s3.ap-northeast-2.amazonaws.com"
+  "proxy": "http://localhost:8080"
 }
